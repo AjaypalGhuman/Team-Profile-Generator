@@ -104,16 +104,16 @@ const employeesPrompt = () => {
         name: 'typeOfEmployee',
         message: "What kind of team member would you like to add?",
         choices: [
-            {name: 'Engineer', value: "addEngineer"},
-            {name: 'Intern', value: "addIntern"},
+            {name: 'Engineer', value: "addEngineerPosition"},
+            {name: 'Intern', value: "addInternPosition"},
             {name: 'FINISHED', value: "finished"}
         ]
     }])
     // send questions based off of what option was selected
     .then( answer => {
         
-        if (answer.typeOfEmployee === 'addEngineer') { engineerPrompt(); };
-        if (answer.typeOfEmployee === 'addIntern') { internPrompt(); };
+        if (answer.typeOfEmployee === 'addEngineerPosition') { engineerPrompt(); };
+        if (answer.typeOfEmployee === 'addInternPosition') { internPrompt(); };
         if (answer.typeOfEmployee === 'finished') {
             
             // help generate html file
