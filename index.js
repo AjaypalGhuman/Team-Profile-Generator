@@ -36,3 +36,33 @@ const managerPrompt = () => {
         return employeePrompt();
     })
 };
+
+const engineerPrompt = () => {
+    return inquirer.prompt ([
+        {
+            type: 'input',
+            name: 'name',
+            message: "What is the engineer's name?"
+        },
+        {
+            type: 'input',
+            name: 'id',
+            message: "Enter the engineer's id?"
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: "Enter the engineer's email?"
+        },
+        {
+            type: 'input',
+            name: 'github',
+            message: "Enter the engineer's github user name?"
+        }
+    ]).then(( answers ) => {
+        answers = new Engineer(answers.name, answers.id, answers.email, answers.github)
+        employeesArr.push(answers);
+        return employeePrompt();
+    })
+};
+
