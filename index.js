@@ -8,6 +8,8 @@ const Intern = require('./lib/Intern');
 
 const employeeArr = [];
 
+const init = () => { managerPrompt() }
+
 const managerPrompt = () => {
     return inquirer.prompt ([
         {
@@ -32,8 +34,8 @@ const managerPrompt = () => {
         }
     ]).then(( answers ) => {
         answers = new Manager(answers.name, answers.id, answers.email, answers.officeNumber)
-        employeesArr.push(answers);
-        return employeePrompt();
+        employeeArr.push(answers);
+        return employeesPrompt();
     })
 };
 
@@ -61,8 +63,8 @@ const engineerPrompt = () => {
         }
     ]).then(( answers ) => {
         answers = new Engineer(answers.name, answers.id, answers.email, answers.github)
-        employeesArr.push(answers);
-        return employeePrompt();
+        employeeArr.push(answers);
+        return employeesPrompt();
     })
 };
 
@@ -90,7 +92,37 @@ const internPrompt = () => {
         }
     ]).then(( answers ) => {
         answers = new Intern(answers.name, answers.id, answers.email, answers.school)
-        employeesArr.push(answers);
-        return employeePrompt();
+        employeeArr.push(answers);
+        return employeesPrompt();
     })
 };
+
+const employeesPrompt = () => {
+    inquirer.prompt([{
+
+        type: 'list',
+        name: 'typeOfEmployee',
+        message: "What kind of team member would you like to add?",
+        choices: [
+            {name: 'Engineer', value: "addEngineer"},
+            {name: 'Intern', value: "addIntern"},
+            {name: 'DONE', value: "done"}
+        ]
+    }])
+    // send questions based off of what option was selected
+    .then( answer => {
+        
+        if (answer.typeOfEmployee === 'addEngineer') { engineerPrompt(); };
+        if (answer.typeOfEmployee === 'addIntern') { internPrompt(); };
+        if (answer.typeOfEmployee === 'done') {
+            
+            // help generate html file
+            let html = renderPage(employeeArr)
+            console.log('...');
+            // creates the actual html file
+            createFile(html);
+        }
+    })
+};
+
+init();
