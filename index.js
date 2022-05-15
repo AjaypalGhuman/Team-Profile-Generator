@@ -106,7 +106,7 @@ const employeesPrompt = () => {
         choices: [
             {name: 'Engineer', value: "addEngineer"},
             {name: 'Intern', value: "addIntern"},
-            {name: 'DONE', value: "done"}
+            {name: 'FINISHED', value: "finished"}
         ]
     }])
     // send questions based off of what option was selected
@@ -114,7 +114,7 @@ const employeesPrompt = () => {
         
         if (answer.typeOfEmployee === 'addEngineer') { engineerPrompt(); };
         if (answer.typeOfEmployee === 'addIntern') { internPrompt(); };
-        if (answer.typeOfEmployee === 'done') {
+        if (answer.typeOfEmployee === 'finished') {
             
             // help generate html file
             let html = renderPage(employeeArr)
