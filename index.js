@@ -66,3 +66,31 @@ const engineerPrompt = () => {
     })
 };
 
+const internPrompt = () => {
+    return inquirer.prompt ([
+        {
+            type: 'input',
+            name: 'name',
+            message: "What is the intern's name?"
+        },
+        {
+            type: 'input',
+            name: 'id',
+            message: "Enter the intern's id?"
+        },
+        {
+            type: 'input',
+            name: 'email',
+            message: "Enter the intern's email?"
+        },
+        {
+            type: 'input',
+            name: 'school',
+            message: "Enter the intern's school?"
+        }
+    ]).then(( answers ) => {
+        answers = new Intern(answers.name, answers.id, answers.email, answers.school)
+        employeesArr.push(answers);
+        return employeePrompt();
+    })
+};
