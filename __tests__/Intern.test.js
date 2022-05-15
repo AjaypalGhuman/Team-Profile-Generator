@@ -1,21 +1,27 @@
 const Intern = require('../lib/Intern');
 
-test('create a new intern', () => {
-    const employee = new Intern('Jack', '123456', 'jackh21@gmail.com', 'FIU');
+test('creates Intern', () => {
+    const intern = new Intern('Jack Paul', 3456, 'jack@paul.com', 'FIU');
 
-    expect(employee.name).toBe('Jack');
-    expect(employee.email).toEqual(expect.any(String));
-    expect(employee.id).toEqual(expect.any(Number));
-    expect(employee.school).toEqual(expect.any(String));
+    expect(intern.name).toBe('Jack Paul');
+
+    expect(intern.id).toEqual(expect.any(Number));
+
+    expect(intern.email).toEqual(expect.any(String));
+
+    expect(intern.school).toEqual(expect.any(String));
 });
 
-test('gets all required data for Interns', () => {
-    const employee = new Intern('Jack', 123456, 'jackh21@gmail.com', 'FIU');
+test('retrieves all info on intern', () => {
+    const intern = new Intern('Jack Paul', 3456, 'jack@paul.com', 'FIU');
 
-    expect(employee.getName()).toBe(employee.name);
-    expect(employee.getId()).toBe(employee.id);
-    expect(employee.getEmail()).toBe(employee.email);
-    expect(employee.getSchool()).toBe(employee.school);
-    
-    expect(employee.getRole()).toBe('Intern');
+    expect(intern.getName()).toBe(intern.name);
+
+    expect(intern.getId()).toBe(intern.id);
+
+    expect(intern.getEmail()).toBe(intern.email);
+
+    expect(intern.getSchool()).toBe(intern.school);
+
+    expect(intern.getRole()).toBe('Intern');
 });
